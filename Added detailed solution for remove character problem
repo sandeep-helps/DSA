@@ -1,0 +1,252 @@
+# Remove All Occurrences of a Character from a String
+
+## Problem Statement
+
+Given a string `s` and a character `c`, remove all occurrences of character `c` from the string.
+
+---
+
+# Example 1
+
+## Input
+
+```cpp id="v7m1lb"
+s = "programming"
+c = 'g'
+```
+
+## Process
+
+Remove every `'g'` from the string.
+
+```cpp id="a2x8nk"
+programming
+→ prorammin
+```
+
+## Output
+
+```cpp id="g9u2df"
+prorammin
+```
+
+---
+
+# Example 2
+
+## Input
+
+```cpp id="m4pk2r"
+s = "banana"
+c = 'a'
+```
+
+## Process
+
+Remove every `'a'`.
+
+```cpp id="wy6r1m"
+banana
+→ bnn
+```
+
+## Output
+
+```cpp id="z0vt8q"
+bnn
+```
+
+---
+
+# Approach
+
+We traverse the string character by character.
+
+* If the current character is equal to `c`, we skip it.
+* Otherwise, we print/store the character.
+
+This way all occurrences of the given character are removed.
+
+---
+
+# Algorithm
+
+1. Take input string `s`
+2. Take character `c`
+3. Traverse the string using loop
+4. Compare each character with `c`
+5. If character matches:
+
+   * Skip it using `continue`
+6. Else:
+
+   * Print/store the character
+7. End
+
+---
+
+# C++ Code
+
+```cpp id="j3n7vs"
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Solution {
+public:
+
+    // Function to remove all occurrences
+    // of character c from string s
+    void removeCharacter(string &s, char c) {
+
+        for(int i = 0; i < s.length(); i++) {
+
+            // Skip character if matched
+            if(s[i] == c) {
+                continue;
+            }
+
+            // Print remaining characters
+            else {
+                cout << s[i];
+            }
+        }
+
+        cout << endl;
+    }
+};
+
+int main() {
+
+    string s;
+    char c;
+
+    cout << "Enter the string: ";
+    cin >> s;
+
+    cout << "Enter the character to remove: ";
+    cin >> c;
+
+    Solution ob;
+
+    ob.removeCharacter(s, c);
+
+    return 0;
+}
+```
+
+---
+
+# Dry Run
+
+## Input
+
+```cpp id="y9f4bt"
+s = "banana"
+c = 'a'
+```
+
+---
+
+## Iteration Process
+
+| Index | Character | Condition | Output |
+| ----- | --------- | --------- | ------ |
+| 0     | b         | b != a    | b      |
+| 1     | a         | a == a    | skip   |
+| 2     | n         | n != a    | bn     |
+| 3     | a         | a == a    | skip   |
+| 4     | n         | n != a    | bnn    |
+| 5     | a         | a == a    | skip   |
+
+---
+
+# Final Output
+
+```cpp id="l6h3vw"
+bnn
+```
+
+---
+
+# Time Complexity
+
+```cpp id="f8e2cz"
+O(n)
+```
+
+Because we traverse the string only once.
+
+---
+
+# Space Complexity
+
+```cpp id="r3mq1k"
+O(1)
+```
+
+No extra space is used except a few variables.
+
+---
+
+# Key Concepts Used
+
+* Strings in C++
+* Loops
+* Conditional Statements
+* Character Comparison
+* Functions
+* Continue Statement
+
+---
+
+# Alternative Approach
+
+Instead of directly printing characters, we can create a new string and store valid characters inside it.
+
+## Alternative Code
+
+```cpp id="h4k9zp"
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Solution {
+public:
+
+    string removeCharacter(string s, char c) {
+
+        string ans = "";
+
+        for(int i = 0; i < s.length(); i++) {
+
+            if(s[i] != c) {
+                ans += s[i];
+            }
+        }
+
+        return ans;
+    }
+};
+
+int main() {
+
+    Solution ob;
+
+    string s = "banana";
+    char c = 'a';
+
+    cout << ob.removeCharacter(s, c);
+
+    return 0;
+}
+```
+
+---
+
+# Advantages of Alternative Approach
+
+* Cleaner output
+* Easier to reuse
+* Returns modified string
+* Better for competitive programming
